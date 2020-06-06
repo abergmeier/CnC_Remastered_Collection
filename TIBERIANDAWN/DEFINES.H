@@ -1828,7 +1828,7 @@ typedef enum WeaponType : char {
 
 #ifdef PETROGLYPH_EXAMPLE_MOD
 	WEAPON_NUKE_LOB,
-#endif PETROGLYPH_EXAMPLE_MOD
+#endif //PETROGLYPH_EXAMPLE_MOD
 			
 	WEAPON_COUNT
 } WeaponType;

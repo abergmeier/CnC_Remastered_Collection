@@ -1640,7 +1640,7 @@ extern "C" __declspec(dllexport) bool __cdecl CNC_Advance_Instance(uint64 player
 		//}
 		Map.Validate();		// give debugger a chance to catch it
 	}
-#endif NDEBUG
+#endif //NDEBUG
 
 	InMainLoop = false;
 

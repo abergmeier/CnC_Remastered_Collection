@@ -455,4 +455,4 @@ long __cdecl Desired_Facing16(long x1, long y1, long x2, long y2);
 
 
 
-#endif FACINGFF_H
+#endif //FACINGFF_H

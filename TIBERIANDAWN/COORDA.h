@@ -138,4 +138,4 @@ unsigned int __cdecl Fixed_To_Cardinal(unsigned base, unsigned fixed);
 
 
 
-#endif COORD_A_H
+#endif //COORD_A_H

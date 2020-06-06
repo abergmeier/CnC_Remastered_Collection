@@ -1350,7 +1350,7 @@ static UnitTypeClass const UnitNukeTank(
 	MISSION_HUNT							// ORDERS:		Default order to give new unit.
 );
 
-#endif PETROGLYPH_EXAMPLE_MOD
+#endif //PETROGLYPH_EXAMPLE_MOD
 
 /*
 **	This is the array of pointers to the static data associated with each
