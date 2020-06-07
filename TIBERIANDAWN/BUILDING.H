@@ -159,8 +159,8 @@ class BuildingClass : public TechnoClass
 		/*---------------------------------------------------------------------
 		**	Constructors, Destructors, and overloaded operators.
 		*/
-		static void * BuildingClass::operator new(size_t size);
-		static void BuildingClass::operator delete(void *ptr);
+		static void * operator new(size_t size);
+		static void operator delete(void *ptr);
 		BuildingClass(void) : Class(0) {};
 		BuildingClass(StructType type, HousesType house);
 		virtual ~BuildingClass(void);

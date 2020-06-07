@@ -45,8 +45,8 @@
 class AnimClass : public ObjectClass, private StageClass {
 	public:
 
-		static void * AnimClass::operator new(size_t size);
-		static void AnimClass::operator delete(void *ptr);
+		static void * operator new(size_t size);
+		static void operator delete(void *ptr);
 		AnimClass(void) : Class(0) {Owner=HOUSE_NONE;Object=0;};		// Default constructor does nothing.
 		AnimClass(AnimType animnum, COORDINATE coord, unsigned char timedelay=0, unsigned char loop=1, bool alt=false);
 		virtual ~AnimClass(void);
