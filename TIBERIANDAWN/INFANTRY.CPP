@@ -1322,7 +1322,7 @@ void InfantryClass::AI(void)
 						return;
 					}
 					if (!Basic_Path()) {
-//Mono_Printf("Infantry Basic_Path is failing.\n");Get_Key();
+//Mono_Print("Infantry Basic_Path is failing.\n");Get_Key();
 						if (Distance(NavCom) < 0x0280 && !IsTethered) {
 							Assign_Destination(TARGET_NONE);
 						} else {

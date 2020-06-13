@@ -1119,19 +1119,19 @@ void NullModemClass::Mono_Debug_Print(int, int refresh)
 
 	if (refresh) {
 		Mono_Set_Cursor (31,1);
-		Mono_Printf ("Serial Port Queues");
+		Mono_Print ("Serial Port Queues");
 
 		Mono_Set_Cursor (9,2);
-		Mono_Printf ("Average Response Time:");
+		Mono_Print ("Average Response Time:");
 
 		Mono_Set_Cursor (20,3);
-		Mono_Printf ("CRC Errors:");
+		Mono_Print ("CRC Errors:");
 
 		Mono_Set_Cursor (43,2);
-		Mono_Printf ("Send Overflows:");
+		Mono_Print ("Send Overflows:");
 
 		Mono_Set_Cursor (40,3);
-		Mono_Printf ("Receive Overflows:");
+		Mono_Print ("Receive Overflows:");
 	}
 
 	Mono_Set_Cursor (32,2);

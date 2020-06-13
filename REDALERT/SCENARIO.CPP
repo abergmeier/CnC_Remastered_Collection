@@ -961,7 +961,7 @@ void Do_Win(void)
 			Show_Mouse();
 #ifdef FIXIT_ANTS
 			AntsEnabled = false;
-//			Mono_Printf("Scenario.cpp one time only antsenabled is false\n");
+//			Mono_Print("Scenario.cpp one time only antsenabled is false\n");
 #endif
 			return;
 		}
@@ -1194,7 +1194,7 @@ void Do_Lose(void)
 	VisiblePage.Clear();
 	Show_Mouse();
 #ifdef CHEAT_KEYS
-//	Mono_Printf("Trying to play lose movie\n");
+//	Mono_Print("Trying to play lose movie\n");
 #endif //CHEAT_KEYS
 	Play_Movie(Scen.LoseMovie);
 
@@ -2127,7 +2127,7 @@ bool Read_Scenario_INI(char * fname, bool )
 						RequiredCD = 1;
 					} else {
 						if (Scen.ScenarioName[2] == 'G') {
-//							Mono_Printf("We are setting REquiredCD to 0");
+//							Mono_Print("We are setting REquiredCD to 0");
 							RequiredCD = 0;
 
 						}
@@ -2176,7 +2176,7 @@ bool Read_Scenario_INI(char * fname, bool )
 
 	int result = ini.Load(file, true);
 	if (result == 0) {
-//		Mono_Printf("ini.Load failed");
+//		Mono_Print("ini.Load failed");
 		GlyphX_Debug_Print("Failed to load scenario file");
 		GlyphX_Debug_Print(fname);
 		return(false);

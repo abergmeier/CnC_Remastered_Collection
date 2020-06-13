@@ -2866,7 +2866,7 @@ void Play_Movie(char const * name, ThemeType theme, bool clrscrn, bool immediate
 		return;
 	}
 	#ifdef CHEAT_KEYS
-	//	Mono_Printf("A\n");
+	//	Mono_Print("A\n");
 	#endif	//CHEAT_KEYS
 	/*
 	** Don't play movies in multiplayer mode
@@ -2875,7 +2875,7 @@ void Play_Movie(char const * name, ThemeType theme, bool clrscrn, bool immediate
 		return;
 	}
 	#ifdef CHEAT_KEYS
-	//Mono_Printf("b\n");
+	//Mono_Print("b\n");
 	#endif	//CHEAT_KEYS
 
 	if (name) {
@@ -2997,7 +2997,7 @@ void Play_Movie(char const * name, ThemeType theme, bool clrscrn, bool immediate
 			assert(vqa != NULL);
 		}
 		#ifdef CHEAT_KEYS
-		//Mono_Printf("d");
+		//Mono_Print("d");
 		#endif	//CHEAT_KEYS
 		/*
 		**	Presume that the screen is left in a garbage state as well as the palette

@@ -1670,16 +1670,16 @@ void IPXManagerClass::Mono_Debug_Print(int index, int refresh)
 
 	if (refresh) {
 		Mono_Set_Cursor (20,1);
-		Mono_Printf ("IPX Queue:");
+		Mono_Print ("IPX Queue:");
 
 		Mono_Set_Cursor (9,2);
-		Mono_Printf ("Average Response Time:");
+		Mono_Print ("Average Response Time:");
 
 		Mono_Set_Cursor (43,1);
-		Mono_Printf ("Send Overflows:");
+		Mono_Print ("Send Overflows:");
 
 		Mono_Set_Cursor (40,2);
-		Mono_Printf ("Receive Overflows:");
+		Mono_Print ("Receive Overflows:");
 
 	}
 
@@ -1708,7 +1708,7 @@ void IPXManagerClass::Mono_Debug_Print(int index, int refresh)
 	}
 	txt[i] = 0;
 	Mono_Set_Cursor ((80-NumBufs)/2,3);
-	Mono_Printf ("%s",txt);
+	Mono_Print (txt);
 
 #else
 	index = index;

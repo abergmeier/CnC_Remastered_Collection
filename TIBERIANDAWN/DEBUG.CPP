@@ -596,9 +596,9 @@ void Debug_Key(unsigned input)
 
 			case KN_F6:
 				if (Map.In_Radar(XY_Cell(Map.MapCellX+5, Map.MapCellY - 1))) {
-					Mono_Printf("Arrrggggghhhhh!");
+					Mono_Print("Arrrggggghhhhh!");
 				} else {
-					Mono_Printf("No Arrrggggghhhhh!");
+					Mono_Print("No Arrrggggghhhhh!");
 				}
 				break;
 

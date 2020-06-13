@@ -2146,7 +2146,7 @@ void MapEditClass::Read_INI(CCINIClass & ini)
 	/*
 	**	Invoke parent's Read_INI
 	*/
-	Mono_Printf("We are in Read_INI\n");
+	Mono_Print("We are in Read_INI\n");
 
 	MouseClass::Read_INI(ini);
 	BaseGauge->Set_Value(Scen.Percent);

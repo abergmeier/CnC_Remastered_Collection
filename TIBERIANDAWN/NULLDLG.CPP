@@ -7008,9 +7008,9 @@ void Smart_Printf( char *format, ... )
 	if (Debug_Smart_Print) {
 		if (Special.IsMonoEnabled) {
 //			Mono_Set_Cursor(0,0);
-			Mono_Printf("%s",buf);
+			Mono_Print(buf);
 		} else {
-//			Mono_Printf("%s",buf);
+//			Mono_Print(buf);
 			printf("%s",buf);
 		}
 	} else {
@@ -8235,9 +8235,9 @@ void Smart_Printf( char *format, ... )
 	if (Debug_Smart_Print) {
 		if (Special.IsMonoEnabled) {
 //			Mono_Set_Cursor(0,0);
-			Mono_Printf("%s",buf);
+			Mono_Print(buf);
 		} else {
-//			Mono_Printf("%s",buf);
+//			Mono_Print(buf);
 			printf("%s",buf);
 		}
 	} else {

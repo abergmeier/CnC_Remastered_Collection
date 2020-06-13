@@ -419,7 +419,7 @@ void UnitClass::AI(void)
 	*/
 	if (*this == UNIT_HOVER) {
 //		Mark_For_Redraw();
-//if (IsDown) Mono_Printf("*");
+//if (IsDown) Mono_Print("*");
 		Mark(MARK_CHANGE);
 	}
 
@@ -2872,7 +2872,7 @@ MoveBitType UnitClass::Blocking_Object(TechnoClass const *techno, CELL cell) con
 				if (face != techface && Distance((AbstractClass const *)techno) > 0x1FF) {
 					return(MOVE_BIT_MOVING_BLOCK);
 				} else {
-//					Mono_Printf("Move No!\r");
+//					Mono_Print("Move No!\r");
 					return(MOVE_BIT_NO);
 				}
 			}

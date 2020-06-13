@@ -739,7 +739,7 @@ void Assert_Failure (char *expression, int line, char *file)
 	if (!MonoClass::Is_Enabled()) MonoClass::Enable();
 
 	Mono_Clear_Screen();
-	Mono_Printf("%s", assertbuf);
+	Mono_Print(assertbuf);
 
 	WWDebugString(assertbuf);
 

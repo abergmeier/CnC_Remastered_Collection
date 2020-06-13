@@ -730,31 +730,31 @@ void CommQueueClass::Mono_Debug_Print(int refresh)
 	*/
 	if (refresh) {
 		Mono_Clear_Screen ();
-		Mono_Printf("┌─────────────────────────────────────────────────────────────────────────────┐\n");
-		Mono_Printf("│                                                                             │\n");
-		Mono_Printf("│                                                                             │\n");
-		Mono_Printf("│                                                                             │\n");
-		Mono_Printf("├──────────────────────────────────────┬──────────────────────────────────────┤\n");
-		Mono_Printf("│              Send Queue              │             Receive Queue            │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│ ID  Ct ACK   ID  Ct ACK    ID  Ct ACK│ ID  Rd ACK    ID  Rd ACK   ID  Rd ACK│\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("└──────────────────────────────────────┴──────────────────────────────────────┘");
+		Mono_Print("┌─────────────────────────────────────────────────────────────────────────────┐\n");
+		Mono_Print("│                                                                             │\n");
+		Mono_Print("│                                                                             │\n");
+		Mono_Print("│                                                                             │\n");
+		Mono_Print("├──────────────────────────────────────┬──────────────────────────────────────┤\n");
+		Mono_Print("│              Send Queue              │             Receive Queue            │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│ ID  Ct ACK   ID  Ct ACK    ID  Ct ACK│ ID  Rd ACK    ID  Rd ACK   ID  Rd ACK│\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("└──────────────────────────────────────┴──────────────────────────────────────┘");
 	}
 
 	/*
@@ -776,7 +776,7 @@ void CommQueueClass::Mono_Debug_Print(int refresh)
 			Mono_Printf ("%4d %2d  %d",hdr->PacketID, SendQueue[i].SendCount,
 				SendQueue[i].IsACK);
 		} else {
-			Mono_Printf ("____ __  _ ");
+			Mono_Print ("____ __  _ ");
 		}
 
 		row++;
@@ -803,7 +803,7 @@ void CommQueueClass::Mono_Debug_Print(int refresh)
 			Mono_Printf ("%4d  %d  %d",hdr->PacketID, ReceiveQueue[i].IsRead,
 				ReceiveQueue[i].IsACK);
 		} else {
-			Mono_Printf ("____  _  _ ");
+			Mono_Print ("____  _  _ ");
 		}
 
 		row++;
@@ -856,31 +856,31 @@ void CommQueueClass::Mono_Debug_Print2(int refresh)
 	*/
 	if (refresh) {
 		Mono_Clear_Screen ();
-		Mono_Printf("┌─────────────────────────────────────────────────────────────────────────────┐\n");
-		Mono_Printf("│                                                                             │\n");
-		Mono_Printf("│                                                                             │\n");
-		Mono_Printf("│                                                                             │\n");
-		Mono_Printf("├──────────────────────────────────────┬──────────────────────────────────────┤\n");
-		Mono_Printf("│              Send Queue              │             Receive Queue            │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│ ID  Ct Type   Data  Name         ACK │ ID  Rd Type   Data  Name         ACK │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("│                                      │                                      │\n");
-		Mono_Printf("└──────────────────────────────────────┴──────────────────────────────────────┘");
+		Mono_Print("┌─────────────────────────────────────────────────────────────────────────────┐\n");
+		Mono_Print("│                                                                             │\n");
+		Mono_Print("│                                                                             │\n");
+		Mono_Print("│                                                                             │\n");
+		Mono_Print("├──────────────────────────────────────┬──────────────────────────────────────┤\n");
+		Mono_Print("│              Send Queue              │             Receive Queue            │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│ ID  Ct Type   Data  Name         ACK │ ID  Rd Type   Data  Name         ACK │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("│                                      │                                      │\n");
+		Mono_Print("└──────────────────────────────────────┴──────────────────────────────────────┘");
 	}
 
 	/*
@@ -935,7 +935,7 @@ void CommQueueClass::Mono_Debug_Print2(int refresh)
 			/*
 			**	Entry isn't active; print blanks
 			*/
-			Mono_Printf("____ __                            _");
+			Mono_Print("____ __                            _");
 		}
 	}
 
@@ -989,7 +989,7 @@ void CommQueueClass::Mono_Debug_Print2(int refresh)
 			/*
 			**	Entry isn't active; print blanks
 			*/
-			Mono_Printf("____ __                            _");
+			Mono_Print("____ __                            _");
 		}
 	}
 

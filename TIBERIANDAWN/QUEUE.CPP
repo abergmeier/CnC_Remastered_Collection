@@ -4033,21 +4033,21 @@ static void Init_Queue_Mono(ConnManClass *net)
 		else {
 			if (NewMonoMode) {
 				Mono_Clear_Screen();
-				Mono_Printf("                         Queue AI:\n");	// flowcount[0]
-				Mono_Printf("                Build Packet Loop:\n");	// flowcount[1]
-				Mono_Printf("                       Frame Sync:\n");	// flowcount[2]
-				Mono_Printf("                Frame Sync Resend:\n");	// flowcount[3]
-				Mono_Printf("               Frame Sync Timeout:\n");	// flowcount[4]
-				Mono_Printf("           Frame Sync New Message:\n");	// flowcount[5]
-				Mono_Printf("                 DoList Execution:\n");	// flowcount[6]
-				Mono_Printf("                  DoList Cleaning:\n");	// flowcount[7]
-				Mono_Printf("\n");
-				Mono_Printf("                            Frame:\n");
-				Mono_Printf("                  MPlayerMaxAhead:\n");
-				Mono_Printf("                       their_recv:\n");
-				Mono_Printf("                       their_sent:\n");
-				Mono_Printf("                          my_sent:\n");
-				Mono_Printf("                 DesiredFrameRate:\n");
+				Mono_Print("                         Queue AI:\n");	// flowcount[0]
+				Mono_Print("                Build Packet Loop:\n");	// flowcount[1]
+				Mono_Print("                       Frame Sync:\n");	// flowcount[2]
+				Mono_Print("                Frame Sync Resend:\n");	// flowcount[3]
+				Mono_Print("               Frame Sync Timeout:\n");	// flowcount[4]
+				Mono_Print("           Frame Sync New Message:\n");	// flowcount[5]
+				Mono_Print("                 DoList Execution:\n");	// flowcount[6]
+				Mono_Print("                  DoList Cleaning:\n");	// flowcount[7]
+				Mono_Print("\n");
+				Mono_Print("                            Frame:\n");
+				Mono_Print("                  MPlayerMaxAhead:\n");
+				Mono_Print("                       their_recv:\n");
+				Mono_Print("                       their_sent:\n");
+				Mono_Print("                          my_sent:\n");
+				Mono_Print("                 DesiredFrameRate:\n");
 				NewMonoMode = 0;
 			}
 		}

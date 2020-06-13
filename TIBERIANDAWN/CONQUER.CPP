@@ -2874,7 +2874,7 @@ void CC_Draw_Shape(void const * shapefile, int shapenum, int x, int y, WindowNum
 			}
 			draw_window.Unlock();
 //		} else {
-//			Mono_Printf( "Overrun ShapeBuffer!!!!!!!!!\n" );
+//			Mono_Print( "Overrun ShapeBuffer!!!!!!!!!\n" );
 		}
 	}
 #endif
