@@ -39,8 +39,8 @@
 #include <memory.h>
 #include	<limits.h>
 #include	<assert.h>
-#include	"mp.h"
-#include	"straw.h"
+#include	"MP.H"
+#include	"STRAW.H"
 
 //#pragma warn -inl
 

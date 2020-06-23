@@ -117,9 +117,11 @@ UnitTypeClass      │   BuildingTypeClass      │  VesselTypeClass
            AircraftTypeClass          InfantryTypeClass
 #endif
 
-
+#ifdef __WATCOMC__
 #include	"watcom.h"
-#include "lint.h"
+#endif
+
+#include "LINT.H"
 
 
 #ifdef WIN32
@@ -203,38 +205,38 @@ struct NoInitClass {
 #include	"key.h"
 #endif
 
-#include <wwlib32.h>
-#include	"mpu.h"
-#include	"bench.h"
-#include	"rect.h"
-#include	"jshell.h"
-#include	"buff.h"
-#include	"face.h"
-#include	"random.h"
-#include	"crc.h"
-#include "compat.h"
-#include	"fixed.h"
-#include	"base64.h"
-#include	"pipe.h"
-#include	"xpipe.h"
-#include	"ramfile.h"
-#include	"lcw.h"
-#include	"lzw.h"
-#include	"lcwpipe.h"
-#include	"lzwpipe.h"
-#include	"lzopipe.h"
-#include	"crcpipe.h"
-#include	"shapipe.h"
-#include	"b64pipe.h"
-#include	"straw.h"
-#include	"xstraw.h"
-#include	"b64straw.h"
-#include	"lcwstraw.h"
-#include	"lzwstraw.h"
-#include	"lzostraw.h"
-#include	"crcstraw.h"
-#include	"shastraw.h"
-#include	"rndstraw.h"
+// #include <WWLIB32.H>
+#include	"MPU.H"
+#include	"BENCH.H"
+#include	"RECT.H"
+#include	"JSHELL.H"
+#include	"BUFF.H"
+#include	"FACE.H"
+#include	"RANDOM.H"
+#include	"CRC.H"
+#include "COMPAT.H"
+#include	"FIXED.H"
+#include	"BASE64.H"
+#include	"PIPE.H"
+#include	"XPIPE.H"
+#include	"RAMFILE.H"
+#include	"LCW.H"
+#include	"LZW.H"
+#include	"LCWPIPE.H"
+#include	"LZWPIPE.H"
+#include	"LZOPIPE.H"
+#include	"CRCPIPE.H"
+#include	"SHAPIPE.H"
+#include	"B64PIPE.H"
+#include	"STRAW.H"
+#include	"XSTRAW.H"
+#include	"B64STRAW.H"
+#include	"LCWSTRAW.H"
+#include	"LZWSTRAW.H"
+#include	"LZOSTRAW.H"
+#include	"CRCSTRAW.H"
+#include	"SHASTRAW.H"
+#include	"RNDSTRAW.H"
 
 // Should be part of WWLIB.H. This is used in JSHELL.CPP.
 typedef struct {
@@ -251,16 +253,15 @@ typedef struct {
 #include	<stddef.h>
 //#include	<mem.h>
 //#include	<dos.h>
-#include	<direct.h>
 #include	<stdarg.h>
 #include	<ctype.h>
 #include	<assert.h>
-#include	<process.h>
 //#include	<new.h>
 
 
-
 #ifdef WIN32
+#include	<process.h>
+#include	<direct.h>
 #define	int386x(a,b,c,d)	0
 #define	int386(a,b,c)	0
 #endif
@@ -276,17 +277,17 @@ extern bool GameActive;
 extern long LParam;
 
 #include	<assert.h>
-#include	"vector.h"
-#include	"heap.h"
-#include	"ccfile.h"
-#include	"monoc.h"
-#include	"conquer.h"
+#include	"VECTOR.H"
+#include	"HEAP.H"
+#include	"CCFILE.H"
+#include	"MONOC.H"
+#include	"CONQUER.H"
 //#include	"debug.h"
-#include "special.h"
-#include	"defines.h"
-#include	"ccini.h"
-#include	"ccptr.h"
-#include	"bar.h"
+#include "SPECIAL.H"
+#include	"DEFINES.H"
+#include	"CCINI.H"
+#include	"CCPTR.H"
+#include	"BAR.H"
 
 /*
 **	Greenleaf specific includes.
@@ -298,6 +299,9 @@ extern long LParam;
 extern long Frame;
 CELL Coord_Cell(COORDINATE coord);
 
+
+// TODO - this should not be part of the include... this should be on the sources no?
+#if 0
 #include	"utracker.h"
 #include	"crate.h"
 #include	"rules.h"
@@ -394,6 +398,8 @@ CELL Coord_Cell(COORDINATE coord);
 #include	"readline.h"
 #include	"vortex.h"
 #include "egos.h"
+#endif
+
 #ifdef WIN32
 //#include	"pcx.h"
 #endif
@@ -416,7 +422,7 @@ bool InitDDraw(void);
 bool PlayMpegMovie(const char* name);
 #endif
 
-#include	"externs.h"
+#include	"EXTERNS.H"
 
 
 extern int Get_CD_Drive(void);

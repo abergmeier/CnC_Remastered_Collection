@@ -66,12 +66,12 @@
 #include	<stddef.h>
 #include	<stdio.h>
 #include	<ctype.h>
-#include	"ini.h"
-#include	"readline.h"
-#include	"xpipe.h"
-#include	"b64pipe.h"
-#include	"xstraw.h"
-#include	"b64straw.h"
+#include	"INI.H"
+#include	"READLINE.H"
+#include	"XPIPE.H"
+#include	"B64PIPE.H"
+#include	"XSTRAW.H"
+#include	"B64STRAW.H"
 
 
 #ifdef FIXIT_FAST_LOAD

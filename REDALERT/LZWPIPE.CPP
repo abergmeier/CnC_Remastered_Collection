@@ -37,9 +37,9 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-#include	"lzwpipe.h"
-#include	"lzw.h"
-#include	"buff.h"
+#include	"LZWPIPE.H"
+#include	"LZW.H"
+#include	"BUFF.H"
 #include	<string.h>
 #include	<assert.h>
 

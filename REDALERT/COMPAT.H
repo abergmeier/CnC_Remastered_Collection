@@ -34,6 +34,9 @@
 
 #ifndef COMPAT_H
 #define COMPAT_H
+#include <new>
+
+typedef int WORD;
 
 
 #define	BuffType		BufferClass
@@ -207,7 +210,7 @@ class IconsetClass : protected IControl_Type
 	private:
 		IconsetClass & operator = (IconsetClass const &);
 		IconsetClass(void);
-		static void * operator new(size_t);
+		static void * operator new(std::size_t);
 };
 
 

@@ -40,8 +40,8 @@
  *   PKey::PKey -- Construct a key using encoded strings.                                      *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include	"pk.h"
-#include	"rndstraw.h"
+#include	"PK.H"
+#include	"RNDSTRAW.H"
 
 
 /***********************************************************************************************

@@ -14,12 +14,12 @@
 // with this program. If not, see https://github.com/electronicarts/CnC_Remastered_Collection
 
 
-#include "function.h"
+#include "FUNCTION.H"
 #include	<ctype.h>
 #include	<string.h>
-#include	"wwfile.h"
-#include	"xstraw.h"
-#include	"readline.h"
+#include	"WWFILE.H"
+#include	"XSTREAW.H"
+#include	"READLINE.H"
 
 
 // Disable the "temporary object used to initialize a non-constant reference" warning.

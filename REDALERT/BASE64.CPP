@@ -35,7 +35,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-#include "base64.h"
+#include "BASE64.H"
 #include	<stddef.h>
 
 /*

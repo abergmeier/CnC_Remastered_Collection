@@ -35,9 +35,9 @@
  *   LZWStraw::~LZWStraw -- Destructor for the LZW straw.                                      *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include	"lzostraw.h"
-#include	"lzwstraw.h"
-#include	"lzo.h"
+#include	"LZOSTRAW.H"
+#include	"LZWSTRAW.H"
+#include	"LZO.H"
 #include	<string.h>
 #include	<assert.h>
 
@@ -159,18 +159,21 @@ int LZWStraw::Get(void * destbuf, int slen)
 			int incount = Straw::Get(&BlockHeader, sizeof(BlockHeader));
 			if (incount != sizeof(BlockHeader)) break;
 
-			char *stageing_buffer = new char [BlockHeader.CompCount];
+			char *staging_buffer = new char [BlockHeader.CompCount];
 			incount = Straw::Get(staging_buffer, BlockHeader.CompCount);
 			if (incount != BlockHeader.CompCount) break;
 
-			lz01x_decompress (ptr, BlockHeader.CompCount, Buffer, sizeof(Buffer), NULL);
+			lzo_uint len = sizeof(Buffer);
+			lzo1x_decompress ( (const lzo_byte *)destbuf, BlockHeader.CompCount, (lzo_byte *)Buffer, &len, NULL);
 			Counter = BlockHeader.UncompCount;
 		} else {
 			BlockHeader.UncompCount = (unsigned short)Straw::Get(Buffer, BlockSize);
 			if (BlockHeader.UncompCount == 0) break;
-			int len = sizeof (Buffer2) - sizeof (BlockHeader);
+			lzo_uint len = sizeof (Buffer2) - sizeof (BlockHeader);
 			char *dictionary = new char [64*1024];
-			lzo1x_1_compress (Buffer, BlockHeader.UncompCount, &Buffer2[sizeof(BlockHeader)], &BlockHeader.CompCount, dictionary);
+			len = sizeof(Buffer);
+			lzo1x_1_compress ( (const lzo_byte *)Buffer, BlockHeader.UncompCount, (lzo_byte *)&Buffer2[sizeof(BlockHeader)], &len, dictionary);
+			BlockHeader.CompCount = (unsigned short)len;
 			delete [] dictionary;
 			memmove(Buffer2, &BlockHeader, sizeof(BlockHeader));
 			Counter = BlockHeader.CompCount+sizeof(BlockHeader);

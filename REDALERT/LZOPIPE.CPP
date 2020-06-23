@@ -37,9 +37,9 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-#include	"lzopipe.h"
-#include	"lzo.h"
-#include	"buff.h"
+#include	"LZOPIPE.H"
+#include	"LZO.H"
+#include	"BUFF.H"
 #include	<string.h>
 #include	<assert.h>
 

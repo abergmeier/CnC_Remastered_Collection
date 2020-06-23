@@ -39,7 +39,7 @@
  */
 
 
-#include "lzo1x.h"
+#include "LZO1X.H"
 #ifndef NDEBUG
 #define NDEBUG
 #endif

@@ -35,7 +35,7 @@
 #ifndef _LZO_H
 #define _LZO_H
 
-#include "lzoconf.h"
+#include "LZOCONF.H"
 
 int lzo1x_1_compress ( 	const lzo_byte *in ,
 								lzo_uint  in_len,

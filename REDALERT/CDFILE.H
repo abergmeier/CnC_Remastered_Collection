@@ -35,8 +35,10 @@
 #ifndef CDFILE_H
 #define CDFILE_H
 
+#if defined (__MSDOS__) || defined (_DOS)
 #include	<dos.h>
 #include	"bfiofile.h"
+#endif
 
 /*
 **	This class is derived from the BufferIOFileClass. This class adds the functionality of searching

@@ -36,7 +36,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-#include	"straw.h"
+#include	"STRAW.H"
 #include	<stddef.h>
 #include	<string.h>
 

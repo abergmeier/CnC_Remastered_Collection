@@ -35,8 +35,8 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-#include "b64pipe.h"
-#include	"base64.h"
+#include "B64PIPE.H"
+#include	"BASE64.H"
 #include	<string.h>
 
 

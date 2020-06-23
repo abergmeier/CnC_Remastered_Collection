@@ -33,8 +33,8 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-#include	"mp.h"
-#include "int.h"
+#include	"MP.H"
+#include "INT.H"
 
 int bignum::Error = 0;
 bool bignum::Carry = false;

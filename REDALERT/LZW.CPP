@@ -37,10 +37,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include	"xstraw.h"
-#include	"xpipe.h"
-#include	"buff.h"
-#include	"lzw.h"
+#include	"XSTRAW.H"
+#include	"XPIPE.H"
+#include	"BUFF.H"
+#include	"LZW.H"
 
 
 LZWEngine::LZWEngine(void)

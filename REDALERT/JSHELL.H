@@ -42,7 +42,9 @@
 //#define getch	Get_Key_Num
 //#define kbhit	Check_Key_Num
 #include	"key.h"
-#else
+#endif
+
+#if defined (__MSDOS__) || defined (_DOS)
 #include	<conio.h>
 #endif
 

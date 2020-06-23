@@ -35,9 +35,9 @@
 #ifndef CCINI_H
 #define CCINI_H
 
-#include	"ini.h"
-#include	"fixed.h"
-#include	"pk.h"
+#include	"INI.H"
+#include	"FIXED.H"
+#include	"PK.H"
 
 class TriggerTypeClass;
 

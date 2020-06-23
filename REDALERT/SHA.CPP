@@ -38,7 +38,7 @@
 
 #include	<stdlib.h>
 //#include	<iostream.h>
-#include	"sha.h"
+#include	"SHA.H"
 
 
 

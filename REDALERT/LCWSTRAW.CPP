@@ -35,8 +35,8 @@
  *   LCWStraw::~LCWStraw -- Destructor for the LCW straw.                                      *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include	"lcwstraw.h"
-#include	"lcw.h"
+#include	"LCWSTRAW.H"
+#include	"LCW.H"
 #include	<string.h>
 #include	<assert.h>
 

@@ -24,7 +24,7 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
+#if !defined(__GNUC__) && !defined(__BORLANDC__)
 #ifndef TRUE_FALSE_DEFINED
 #define TRUE_FALSE_DEFINED
 enum {false=0,true=1};
@@ -33,9 +33,9 @@ typedef int bool;
 #endif
 
 #include	<stdlib.h>
-#include	"listnode.h"
-#include	"pk.h"
-#include "buff.h"
+#include	"LISTNODE.H"
+#include	"PK.H"
+#include "BUFF.H"
 
 template<class T>
 class MixFileClass : public Node<MixFileClass<T>>

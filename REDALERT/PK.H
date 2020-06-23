@@ -35,7 +35,7 @@
 #ifndef PK_H
 #define PK_H
 
-#include	"int.h"
+#include	"INT.H"
 
 /*
 **	This class holds a public or private key used in Public Key Cryptography. It also serves

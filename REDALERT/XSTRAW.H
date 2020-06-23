@@ -36,9 +36,9 @@
 #ifndef XSTRAW_H
 #define XSTRAW_H
 
-#include	"straw.h"
-#include	"buff.h"
-#include	"wwfile.h"
+#include	"STRAW.H"
+#include	"BUFF.H"
+#include	"WWFILE.H"
 #include	<stddef.h>
 
 /*

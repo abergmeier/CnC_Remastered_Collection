@@ -36,7 +36,7 @@
 #ifndef LZOPIPE_H
 #define LZOPIPE_H
 
-#include	"pipe.h"
+#include	"PIPE.H"
 
 
 /*

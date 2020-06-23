@@ -555,7 +555,10 @@ typedef union {
 }	COORD_COMPOSITE;
 
 typedef signed short		CELL;
-#define	SLUFF_BITS	(sizeof(CELL)*CHAR_BIT)-(14)
+
+
+#define SLUFF_BITS sizeof(signed short) * CHAR_BIT - 14
+
 typedef union {
 	CELL Cell;
 	struct {

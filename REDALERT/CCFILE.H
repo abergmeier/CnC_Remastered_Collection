@@ -37,9 +37,9 @@
 
 //#include	<wwlib32.h>
 #include	<limits.h>
-#include	"mixfile.h"
-#include	"cdfile.h"
-#include	"buff.h"
+#include	"MIXFILE.H"
+#include	"CDFILE.H"
+#include	"BUFF.H"
 
 
 /*

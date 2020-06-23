@@ -36,8 +36,8 @@
 #ifndef SHAPIPE_H
 #define SHAPIPE_H
 
-#include	"pipe.h"
-#include	"sha.h"
+#include	"PIPE.H"
+#include	"SHA.H"
 
 /*
 **	This class serves as a pipe that generates a Secure Hash from the data stream that flows

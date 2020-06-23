@@ -35,7 +35,7 @@
 #ifndef EXTERNS_H
 #define EXTERNS_H
 
-#include	"cell.h"
+#include	"CELL.H"
 
 #ifdef SCENARIO_EDITOR
 #include	"mapedit.h"
