@@ -73,7 +73,7 @@ void LogicClass::Debug_Dump(MonoClass *mono) const
 	AverageFramesPerSecond = TotalFrames/FPSDivider++;
 
 	mono->Set_Cursor(21, 9);
-	mono->Print(
+	auto a = cp437string_array(
 		"┌──────────┬───┬─────────────────────────────────────────┐\r"
 		"│Units.....│   │Frame Rate:      Avg:      Frame:        │\r"
 		"│Infantry..│   ├─────────────────────────────────────────┤\r"
@@ -88,6 +88,8 @@ void LogicClass::Debug_Dump(MonoClass *mono) const
 		"│          │   ├                                         ┤\r"
 		"│          │   │                                         │\r"
 		"└──────────┴───┴─────────────┤Spare CPU Time├────────────┘\r");
+	cp437string_view s(a.data(), a.size());
+	mono->Print(&s);
 
 	_framecounter++;
 	mono->Set_Cursor(70, 10);mono->Printf("%ld", Frame);
@@ -135,7 +137,10 @@ void LogicClass::Debug_Dump(MonoClass *mono) const
 
 			str[1] = '\0';
 			str[0] = _barchar[index];
-			mono->Text_Print(str, 37+column, 21-(row/2));
+			constexpr unsigned strSize = sizeof(str) / sizeof(*str);
+			cp437string_array<strSize> a(str, strSize);
+			cp437string_view s(a.data(), a.size());
+			mono->Text_Print(s, 37+column, 21-(row/2));
 		}
 	}
 

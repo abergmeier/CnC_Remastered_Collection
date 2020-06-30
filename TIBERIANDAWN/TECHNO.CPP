@@ -422,14 +422,14 @@ void TechnoClass::Debug_Dump(MonoClass *mono) const
 {
 	mono->Set_Cursor(0,0);mono->Printf("(%04X)p=%d,d=%d", House->Power_Fraction(), House->Power, House->Drain);
 //	mono->Set_Cursor(0,0);mono->Printf("(%d)", House->Blockage);
-	mono->Text_Print("X", 16 + (IsALoaner?2:0), 11);
-	mono->Text_Print("X", 16 + (IsLocked?2:0), 9);
+	mono->Text_PrintX(16 + (IsALoaner?2:0), 11);
+	mono->Text_PrintX(16 + (IsLocked?2:0), 9);
 
-	mono->Text_Print("X", 16 + (IsInRecoilState?2:0), 17);
-	mono->Text_Print("X", 16 + (IsTethered?2:0), 8);
-	mono->Text_Print("X", 16 + (IsOwnedByPlayer?2:0), 5);
-	mono->Text_Print("X", 16 + (IsDiscoveredByPlayer?2:0), 6);
-//	mono->Text_Print("X", 16 + (IsALemon?2:0), 9);
+	mono->Text_PrintX(16 + (IsInRecoilState?2:0), 17);
+	mono->Text_PrintX(16 + (IsTethered?2:0), 8);
+	mono->Text_PrintX(16 + (IsOwnedByPlayer?2:0), 5);
+	mono->Text_PrintX(16 + (IsDiscoveredByPlayer?2:0), 6);
+//	mono->Text_PrintX(16 + (IsALemon?2:0), 9);
 	mono->Set_Cursor(28, 7);mono->Printf("%2d", Arm);
 	mono->Set_Cursor(34, 1);mono->Printf("%04X", TarCom);
 	mono->Set_Cursor(29, 3);mono->Printf("%02X", PrimaryFacing.Current());

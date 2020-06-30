@@ -75,6 +75,8 @@
 #ifndef INLINE_H
 #define INLINE_H
 
+#include "UNICODE.H"
+
 
 /***********************************************************************************************
  * Lepton_To_Pixel -- Convert a lepton value into pixel value.                                 *
@@ -918,7 +920,7 @@ inline FacingType Dir_To_8(DirType facing)
  * HISTORY:                                                                                    *
  *   08/26/1996 JLB : Created.                                                                 *
  *=============================================================================================*/
-inline char const * Text_String(int string)
+inline cp437string_view Text_String(int string)
 {
 #ifdef FIXIT_NAME_OVERRIDE
 	if (string < 0 && abs(string) < ARRAY_SIZE(NameOverride)) {

@@ -303,7 +303,7 @@ void UnitClass::Debug_Dump(MonoClass *mono) const
 {
 	Validate();
 	mono->Set_Cursor(0, 0);
-	mono->Print(
+	constexpr auto a = cp437string_array(
 		"┌Name:──────────────┬Mission:───┬TarCom:┬NavCom:┬Radio:┬Coord:──┬HeadTo:─┬St:─┐\n"
 		"│                   │           │       │       │      │        │        │    │\n"
 		"├──────────────┬N┬Y┬Health:─┬Body:┬Turret:┬Speed:┬Path:┴──────┬Cargo:────┴────┤\n"
@@ -324,6 +324,8 @@ void UnitClass::Debug_Dump(MonoClass *mono) const
 		"│Recoiling.....│ │ │                                                           \n"
 		"│To Display....│ │ │                                                           \n"
 		"└──────────────┴─┴─┘                                                           \n");
+	auto s = cp437string_view(a.data(), a.size());
+	mono->Print(&s);
 	mono->Set_Cursor(1, 1);mono->Printf("%s:%s", House->Class->IniName, Class->IniName);
 	CargoClass::Debug_Dump(mono);
 	MissionClass::Debug_Dump(mono);

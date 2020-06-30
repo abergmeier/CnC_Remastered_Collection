@@ -168,7 +168,7 @@ short const * Coord_Spillage_List(COORDINATE coord, int maxsize)
  * HISTORY:                                                                                    *
  *   05/27/1994 JLB : Created.                                                                 *
  *=============================================================================================*/
-COORDINATE Coord_Move(COORDINATE start, register DirType dir, unsigned short distance)
+COORDINATE Coord_Move(COORDINATE start, DirType dir, unsigned short distance)
 {
 	short x = Coord_X(start);
 	short y = Coord_Y(start);
@@ -468,7 +468,7 @@ extern int calcy(signed short, short distance);
 
 
 
-void Move_Point(short &x, short &y, register DirType dir, unsigned short distance)
+void Move_Point(short &x, short &y, DirType dir, unsigned short distance)
 {
 //	static char const CosTable[256] = {
 	static unsigned char const CosTable[256] = {

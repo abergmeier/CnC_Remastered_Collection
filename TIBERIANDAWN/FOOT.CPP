@@ -235,11 +235,11 @@ void FootClass::Debug_Dump(MonoClass *mono) const
 			Path_To_String(Path[12]));
 
 		mono->Set_Cursor(65, 1);mono->Printf("%08lX", Head_To_Coord());
-		mono->Text_Print("X", 16 + (IsDeploying?2:0), 12);
-		mono->Text_Print("X", 16 + (IsRotating?2:0), 13);
-		mono->Text_Print("X", 16 + (IsDriving?2:0), 15);
-		mono->Text_Print("X", 16 + (IsFiring?2:0), 14);
-		mono->Text_Print("X", 16 + (IsPlanningToLook?2:0), 16);
+		mono->Text_PrintX(16 + (IsDeploying?2:0), 12);
+		mono->Text_PrintX(16 + (IsRotating?2:0), 13);
+		mono->Text_PrintX(16 + (IsDriving?2:0), 15);
+		mono->Text_PrintX(16 + (IsFiring?2:0), 14);
+		mono->Text_PrintX(16 + (IsPlanningToLook?2:0), 16);
 	}
 	TechnoClass::Debug_Dump(mono);
 }

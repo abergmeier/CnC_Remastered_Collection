@@ -961,7 +961,9 @@ void CommBufferClass::Mono_Debug_Print2(int refresh)
 				sprintf(txt + strlen(txt),"                    %x",SendQueue[i].IsACK);
 			}
 
-			Mono_Print(txt);
+			constexpr unsigned txtSize = sizeof(txt) / sizeof(*txt);
+			cp437string_array<txtSize> a(txt, strlen(txt) + 1);
+			Mono_Print_cp437(cp437string_view(a.data(), a.size()));
 		} else {
 
 			/*.....................................................................
@@ -1018,7 +1020,9 @@ void CommBufferClass::Mono_Debug_Print2(int refresh)
 				sprintf(txt + strlen(txt),"                    %x",ReceiveQueue[i].IsACK);
 			}
 
-			Mono_Print(txt);
+			constexpr unsigned txtSize = sizeof(txt) / sizeof(*txt);
+			cp437string_array<txtSize> a(txt, strlen(txt) + 1);
+			Mono_Print_cp437(cp437string_view(a.data(), a.size()));
 		} else {
 
 			/*.....................................................................

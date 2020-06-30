@@ -5,5 +5,7 @@ compiler:
 - clang
 os:
 - linux
+before_install:
+  - sudo apt-get -y install ninja-build
 script:
-- cmake --version
+- mkdir build && cd build && cmake .. -G Ninja && ninja && CTEST_OUTPUT_ON_FAILURE=1 ninja test

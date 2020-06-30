@@ -1959,7 +1959,7 @@ void AircraftClass::Debug_Dump(MonoClass *mono) const
 {
 	Validate();
 	mono->Set_Cursor(0, 0);
-	mono->Print(
+	constexpr auto a = cp437string_array(
 		"┌Name:──────────────┬Mission:───┬TarCom:┬NavCom:┬Radio:┬Coord:──┬Altitude┬St:─┐\n"
 		"│                   │           │       │       │      │        │        │    │\n"
 		"├──────────────┬N┬Y┬Health:─┬Fdir:┬─Bdir:─┬Speed:┬─────┴──────┬Cargo:────┴────┤\n"
@@ -1980,13 +1980,15 @@ void AircraftClass::Debug_Dump(MonoClass *mono) const
 		"│Recoiling.....│ │ │                                                           \n"
 		"│To Display....│ │ │                                                           \n"
 		"└──────────────┴─┴─┘                                                           \n");
+	auto s = cp437string_view(a.data(), a.size());
+	mono->Print(&s);
 	mono->Set_Cursor(1, 1);mono->Printf("%s:%s", House->Class->IniName, Class->IniName);
 	mono->Set_Cursor(36, 3);mono->Printf("%02X:%02X", SecondaryFacing.Current(), SecondaryFacing.Desired());
 	mono->Set_Cursor(42, 1);mono->Printf("%04X", NavCom);
 	mono->Set_Cursor(66, 1);mono->Printf("%d", Altitude);
 	mono->Set_Cursor(44, 3);mono->Printf("%d", Get_Speed());
-	mono->Text_Print("X", 16 + (IsLanding?2:0), 12);
-	mono->Text_Print("X", 16 + (IsTakingOff?2:0), 13);
+	mono->Text_PrintX(16 + (IsLanding?2:0), 12);
+	mono->Text_PrintX(16 + (IsTakingOff?2:0), 13);
 	FootClass::Debug_Dump(mono);
 }
 #endif

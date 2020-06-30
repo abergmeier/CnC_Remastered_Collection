@@ -988,12 +988,12 @@ bool ObjectClass::Render(bool forced)
  *=============================================================================================*/
 void ObjectClass::Debug_Dump(MonoClass *mono) const
 {
-	mono->Text_Print("X", 16 + (IsToDisplay?2:0), 18);
-	mono->Text_Print("X", 16 + (IsActive?2:0), 3);
-	mono->Text_Print("X", 16 + (IsInLimbo?2:0), 4);
-	//mono->Text_Print("X", 16 + (IsSelected?2:0), 7);
+	mono->Text_PrintX(16 + (IsToDisplay?2:0), 18);
+	mono->Text_PrintX(16 + (IsActive?2:0), 3);
+	mono->Text_PrintX(16 + (IsInLimbo?2:0), 4);
+	//mono->Text_PrintX(16 + (IsSelected?2:0), 7);
 	// Updated to function for multiplayer - 6/26/2019 JAS
-	mono->Text_Print("X", 16 + (Is_Selected_By_Player() ?2:0), 7);
+	mono->Text_PrintX(16 + (Is_Selected_By_Player() ?2:0), 7);
 	mono->Set_Cursor(56, 1);
 	mono->Printf("%08lX", Coord);
 	mono->Set_Cursor(14, 1);mono->Printf("[%04X]", As_Target());

@@ -1075,7 +1075,8 @@ void CommBufferClass::Mono_Debug_Print2(int refresh)
 					SendQueue[i].IsACK);
 			}
 
-			Mono_Print(txt);
+			cp437string_view s(txt, strlen(txt));
+			Mono_Print_cp437(s);
 		}
 		else {
 
@@ -1138,8 +1139,9 @@ void CommBufferClass::Mono_Debug_Print2(int refresh)
 				sprintf(txt + strlen(txt),"                    %x",
 					ReceiveQueue[i].IsACK);
 			}
-
-			Mono_Print(txt);
+			
+			cp437string_view s(txt, strlen(txt));
+			Mono_Print_cp437(s);
 		}
 		else {
 

@@ -7558,7 +7558,7 @@ void Smart_Printf( char *format, ... )
 
 	if (Debug_Smart_Print) {
 		if (MonoClass::Is_Enabled()) {
-			Mono_Print(buf);
+			Mono_Print_cp437(cp437string_view(buf, strlen(buf)));
 		} else {
 			printf("%s",buf);
 		}

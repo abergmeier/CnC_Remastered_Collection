@@ -335,8 +335,8 @@ void DriveClass::Debug_Dump(MonoClass *mono) const
 {
 	mono->Set_Cursor(33, 7);
 	mono->Printf("%2d:%2d", TrackNumber, TrackIndex);
-	mono->Text_Print("X", 16 + (IsTurretLockedDown?2:0), 10);
-//	mono->Text_Print("X", 16 + (IsOnShortTrack?2:0), 11);
+	mono->Text_PrintX(16 + (IsTurretLockedDown?2:0), 10);
+//	mono->Text_PrintX(16 + (IsOnShortTrack?2:0), 11);
 	mono->Set_Cursor(41, 7);mono->Printf("%d", Fixed_To_Cardinal(100, Tiberium_Load()));
 	FootClass::Debug_Dump(mono);
 }

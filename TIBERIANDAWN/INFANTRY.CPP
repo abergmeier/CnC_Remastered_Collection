@@ -187,7 +187,8 @@ int InfantryClass::Validate(void) const
 void InfantryClass::Debug_Dump(MonoClass *mono) const
 {
 	Validate();
-	mono->Set_Cursor(0, 0);mono->Print(
+	mono->Set_Cursor(0, 0);
+	constexpr auto a = cp437string_array(
 		"┌Name:──────────────┬Mission:───┬TarCom:┬NavCom:┬Radio:┬Coord:──┬HeadTo:─┬St:─┐\n"
 		"│                   │           │       │       │      │        │        │    │\n"
 		"├──────────────┬N┬Y┬Health:─┬Body:┬Turret:┬Speed:┬Path:┴──────┬Cargo:────┴────┤\n"
@@ -208,8 +209,10 @@ void InfantryClass::Debug_Dump(MonoClass *mono) const
 		"│Recoiling.....│ │ │                                                           \n"
 		"│To Display....│ │ │                                                           \n"
 		"└──────────────┴─┴─┘                                                           \n");
+	auto s = cp437string_view(a.data(), a.size());
+	mono->Print(&s);
 	mono->Set_Cursor(1, 1);mono->Printf("%s:%s", House->Class->IniName, Class->IniName);
-	mono->Text_Print("X", 16 + (IsProne?2:0), 10);
+	mono->Text_PrintX(16 + (IsProne?2:0), 10);
 	mono->Set_Cursor(33, 7);mono->Printf("%2d", Fear);
 	mono->Set_Cursor(41, 7);mono->Printf("%2d", Doing);
 	FootClass::Debug_Dump(mono);

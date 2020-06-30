@@ -15,5 +15,9 @@ jobs:
         Start-Process -Wait sdksetup.exe -ArgumentList "/q", "/norestart", "/features", "OptionId.WindowsDesktopSoftwareDevelopmentKit", "OptionId.NetFxSoftwareDevelopmentKit"
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Test
+      uses: lukka/run-cmake@v2
+      with:
+        cmakeGenerator: VS16Win64
     - name: Compile
       run: msbuild CnCRemastered.sln

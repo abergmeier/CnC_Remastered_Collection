@@ -37,6 +37,7 @@
 
 //#include	"dpmi.h"
 //#include	"function.h"
+class cp437string_view;
 
 class MonoClass {
 		/*
@@ -109,11 +110,11 @@ class MonoClass {
 		void Set_Default_Attribute(char attrib) {Attrib = attrib;};
 		void Clear(void);
 		void Set_Cursor(int x, int y);
-		void Print(char const *text);
+		void Print(cp437string_view *text);
 		void Print(int text);
 		void Printf(char const *text, ...);
 		void Printf(int text, ...);
-		void Text_Print(char const *text, int x, int y, char attrib=DEFAULT_ATTRIBUTE);
+		void Text_Print(cp437string_view &text, int x, int y, char attrib=DEFAULT_ATTRIBUTE);
 		void Text_Print(int text, int x, int y, char attrib=DEFAULT_ATTRIBUTE);
 		void View(void);
 		int Get_X(void) const {return X;};
@@ -176,11 +177,12 @@ class MonoClass {
 
 
 void Mono_Set_Cursor(int x, int y);
-int Mono_Printf(char const *string, ...);
+
+int Mono_Printf_cp437(cp437string_view& text, ...);
 void Mono_Clear_Screen(void);
-void Mono_Text_Print(void const *text, int x, int y, int attrib);
+void Mono_Text_Print_cp437(cp437string_view &text, int x, int y, int attrib);
 void Mono_Draw_Rect(int x, int y, int w, int h, int attrib, int thick);
-void Mono_Print(void const *text);
+void Mono_Print_cp437(cp437string_view &text);
 int Mono_X(void);
 int Mono_Y(void);
 

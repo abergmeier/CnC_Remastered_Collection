@@ -8235,7 +8235,10 @@ void Smart_Printf( char *format, ... )
 	if (Debug_Smart_Print) {
 		if (Special.IsMonoEnabled) {
 //			Mono_Set_Cursor(0,0);
-			Mono_Print(buf);
+			constexpr unsigned bufSize = sizeof(buf) / sizeof(*buf);
+			cp437string_array<bufSize> a(buf, strlen(buf) + 1);
+			cp437string_view s(a.data(), a.size());
+			Mono_Print_cp437(s);
 		} else {
 //			Mono_Print(buf);
 			printf("%s",buf);

@@ -49,6 +49,7 @@ typedef int bool;
 #endif
 #endif
 
+#include "UNICODE.H"
 
 class MonoClass {
 	public:
@@ -92,11 +93,19 @@ class MonoClass {
 		void Set_Default_Attribute(MonoAttribute attrib) {Attrib = attrib;};
 		void Clear(void);
 		void Set_Cursor(int x, int y);
-		void Print(char const *text);
+		void Print(cp437string_view *text);
+		void Print(cp437string_view &text) {
+			Print(&text);
+		}
+		template <unsigned N>
+		void Print(cp437string_array<N> const &a) {
+			cp437string_view s(a);
+			Print(s);
+		}
 		void Print(int text);
 		void Printf(char const *text, ...);
 		void Printf(int text, ...);
-		void Text_Print(char const *text, int x, int y, MonoAttribute attrib=NORMAL);
+		void Text_Print(cp437string_view &text, int x, int y, MonoAttribute attrib=NORMAL);
 		void Text_Print(int text, int x, int y, MonoAttribute attrib=NORMAL);
 		void View(void);
 		void Scroll(int lines=1);
@@ -226,9 +235,19 @@ extern void Mono_Set_Cursor(int x, int y);
 extern int Mono_Printf(int string, ...);
 extern int Mono_Printf(char const * string, ...);
 extern void Mono_Clear_Screen(void);
-extern void Mono_Text_Print(void const *text, int x, int y, int attrib);
+#define Mono_Text_Print(text, ...) \
+  { \
+    constexpr auto a = cp437string_array(u8##text); \
+    Mono_Text_Print_cp437(cp437string_view(a), __VA__ARGS__); \
+  }
+extern void Mono_Text_Print_cp437(cp437string_view &text, int x, int y, int attrib);
 extern void Mono_Draw_Rect(int x, int y, int w, int h, int attrib, int thick);
-extern void Mono_Print(void const *text);
+#define Mono_Print(text) \
+  { \
+    constexpr auto a = cp437string_array(u8##text); \
+    Mono_Print_cp437(cp437string_view(a)); \
+  }
+extern void Mono_Print_cp437(cp437string_view &text);
 extern int Mono_X(void);
 extern int Mono_Y(void);
 #endif

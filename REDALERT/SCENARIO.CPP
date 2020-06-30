@@ -2214,8 +2214,8 @@ bool Read_Scenario_INI(char * fname, bool )
 	*/
 #ifdef FIXIT_NAME_OVERRIDE
 	for (int index = 0; index < ARRAY_SIZE(NameOverride); index++) {
-		if (NameOverride[index] != NULL) free((void*)NameOverride[index]);
-		NameOverride[index] = NULL;
+		if (NameOverride[index].data() != NULL) free((void*)NameOverride[index].data());
+		NameOverride[index] = cp437string_view(NULL, 0);
 		NameIDOverride[index] = 0;
 	}
 	if (Session.Type == GAME_NORMAL)  {

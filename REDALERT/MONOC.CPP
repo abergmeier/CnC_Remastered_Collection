@@ -555,7 +555,9 @@ void MonoClass::Printf(char const *text, ...)
 	vsprintf(buffer, text, va);
 	buffer[sizeof(buffer)-1] = '\0';
 
-	Print(buffer);
+	constexpr unsigned bufferSize = sizeof(buffer) / sizeof(*buffer);
+	cp437string_array<bufferSize> a(buffer, strlen(buffer) + 1);
+	Print(a);
 	va_end(va);
 }
 
@@ -595,7 +597,9 @@ void MonoClass::Printf(int text, ...)
 	vsprintf(buffer, Text_String(text), va);
 	buffer[sizeof(buffer)-1] = '\0';
 
-	Print(buffer);
+	constexpr unsigned bufferSize = sizeof(buffer) / sizeof(*buffer);
+	cp437string_array<bufferSize> a(buffer, strlen(buffer) + 1);
+	Print(a);
 	va_end(va);
 }
 
@@ -615,7 +619,7 @@ void MonoClass::Printf(int text, ...)
  * HISTORY:                                                                                    *
  *   10/17/1994 JLB : Created.                                                                 *
  *=============================================================================================*/
-void MonoClass::Print(char const * ptr)
+void MonoClass::Print(cp437string_view * ptr)
 {
 	int startcol = X;
 	char const * text;
@@ -623,7 +627,7 @@ void MonoClass::Print(char const * ptr)
 
 	if (!ptr || !Enabled) return;
 
-	text = ptr;
+	text = ptr->data();
 	cell.Attribute = Attrib;
 	while (*text) {
 
@@ -707,7 +711,7 @@ void MonoClass::Print(char const * ptr)
  * HISTORY:                                                                                    *
  *   10/17/1994 JLB : Created.                                                                 *
  *=============================================================================================*/
-void MonoClass::Text_Print(char const *text, int x, int y, MonoAttribute attrib)
+void MonoClass::Text_Print(cp437string_view &text, int x, int y, MonoAttribute attrib)
 {
 	int	oldx = X;
 	int	oldy = Y;
@@ -910,7 +914,9 @@ int Mono_Printf(char const * string, ...)
 		va_start(va, string);
 		vsprintf(buffer, string, va);
 
-		mono->Print(buffer);
+		constexpr unsigned bufferSize = sizeof(buffer) / sizeof(*buffer);
+		cp437string_array<bufferSize> a(buffer, strlen(buffer) + 1);
+		mono->Print(a);
 
 		va_end(va);
 	}
@@ -963,7 +969,7 @@ void Mono_Clear_Screen(void)
  * HISTORY:                                                                                    *
  *   06/04/1996 JLB : Created.                                                                 *
  *=============================================================================================*/
-void Mono_Text_Print(void const *text, int x, int y, int attrib)
+void Mono_Text_Print_cp437(cp437string_view &text, int x, int y, int attrib)
 {
 	if (MonoClass::Is_Enabled()) {
 		MonoClass * mono = MonoClass::Get_Current();
@@ -971,7 +977,7 @@ void Mono_Text_Print(void const *text, int x, int y, int attrib)
 			mono = new MonoClass();
 			mono->View();
 		}
-		mono->Text_Print((const char*)text, x, y, (MonoClass::MonoAttribute)attrib);
+		mono->Text_Print(text, x, y, (MonoClass::MonoAttribute)attrib);
 	}
 }
 
@@ -1024,7 +1030,7 @@ void Mono_Draw_Rect(int x, int y, int w, int h, int attrib, int thick)
  * HISTORY:                                                                                    *
  *   06/04/1996 JLB : Created.                                                                 *
  *=============================================================================================*/
-void Mono_Print(void const *text)
+void Mono_Print_cp437(cp437string_view &text)
 {
 	if (MonoClass::Is_Enabled()) {
 		MonoClass * mono = MonoClass::Get_Current();
@@ -1032,7 +1038,7 @@ void Mono_Print(void const *text)
 			mono = new MonoClass();
 			mono->View();
 		}
-		mono->Print((const char*)text);
+		mono->Print(text);
 	}
 }
 
@@ -1122,11 +1128,13 @@ int Mono_Printf(int string, ...)
 		va_start(va, string);
 		vsprintf(buffer, Text_String(string), va);
 
-		mono->Print(buffer);
+		constexpr unsigned bufferSize = sizeof(buffer) / sizeof(*buffer);
+		cp437string_array<bufferSize> a(buffer, strlen(buffer) + 1);
+		mono->Print(a);
 
 		va_end(va);
 	}
-	return((short)strlen(buffer));
+	return((short)strlen(s.data()));
 }
 
 //#endif

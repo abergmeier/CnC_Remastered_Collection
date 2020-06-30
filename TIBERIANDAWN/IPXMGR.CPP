@@ -67,6 +67,7 @@
 #include "ipx95.h"
 #include "tcpip.h"
 
+
 /***************************************************************************
  * IPXManagerClass::IPXManagerClass -- class constructor                   *
  *                                                                         *
@@ -1708,7 +1709,10 @@ void IPXManagerClass::Mono_Debug_Print(int index, int refresh)
 	}
 	txt[i] = 0;
 	Mono_Set_Cursor ((80-NumBufs)/2,3);
-	Mono_Print (txt);
+	constexpr unsigned txtSize = sizeof(txt) / sizeof(*txt);
+	cp437string_array<txtSize> a(txt, strlen(txt) + 1);
+	cp437string_view s(a.data(), a.size());
+	Mono_Print_cp437 (s);
 
 #else
 	index = index;

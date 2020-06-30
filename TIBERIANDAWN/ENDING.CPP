@@ -167,7 +167,7 @@ void Nod_Ending(void)
 	bool printedtext = false;
 	while (!done) {
 		if (!printedtext && !Is_Sample_Playing(kanefinl)) {
-			printedtext++;
+			printedtext = true;
 			Alloc_Object(new ScorePrintClass(Text_String(TXT_SEL_TARGET), 0, 180,_tanpal));
 			mouseshown = true;
 			Show_Mouse();
@@ -184,7 +184,7 @@ void Nod_Ending(void)
 					int mousex = _Kbd->MouseQX;
 					int mousey = _Kbd->MouseQY;
 					if (mousey >= 22*2 && mousey <= 177*2) {
-						done++;
+						done = true;
 						if (mousex <  160*2 && mousey <  100*2) selection = 2;
 						if (mousex <  160*2 && mousey >= 100*2) selection = 3;
 						if (mousex >= 160*2 && mousey >= 100*2) selection = 4;
