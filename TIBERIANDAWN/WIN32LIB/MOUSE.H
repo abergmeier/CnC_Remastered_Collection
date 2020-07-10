@@ -32,7 +32,11 @@
 #ifndef WW_MOUSE_H
 #define WW_MOUSE_H
 
-#include <gbuffer.h>
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+
+class GraphicBufferClass;
+class GraphicViewPortClass;
 
 class WWMouseClass {
 	public:
@@ -53,7 +57,7 @@ class WWMouseClass {
 		// other than the hidpage.
 		//
 		void Draw_Mouse(GraphicViewPortClass *scr);
-		void Erase_Mouse(GraphicViewPortClass *scr, int forced = FALSE);
+		void Erase_Mouse(GraphicViewPortClass *scr, int forced = 0);
 
 		void Block_Mouse(GraphicBufferClass *buffer);
 		void Unblock_Mouse(GraphicBufferClass *buffer);
