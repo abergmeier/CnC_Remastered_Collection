@@ -5,5 +5,11 @@ compiler:
 - clang
 os:
 - linux
+before_install:
+- sudo apt-get -y install ninja-build
+before_script:
+- mkdir build
+- cd build
+- cmake .. -GNinja -DCMAKE_C_COMPILER=$CC_FOR_BUILD -DCMAKE_CXX_COMPILER=$CXX_FOR_BUILD
 script:
-- cmake --version
+- cmake --build .
