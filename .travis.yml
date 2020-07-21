@@ -22,5 +22,7 @@ script:
 - cmake --build .
 - cd "$TRAVIS_BUILD_DIR/cmd/racrc"
 - CGO_LDFLAGS="-L"$TRAVIS_BUILD_DIR/build/REDALERT" -l:libRA_CRC.a" go build
-- cd "$TRAVIS_BUILD_DIR/pkg"
+- cd "$TRAVIS_BUILD_DIR/cmd/westdb"
+- CGO_LDFLAGS="-L"$TRAVIS_BUILD_DIR/build/REDALERT" -l:libRA_CRC.a" go build
+- cd "$TRAVIS_BUILD_DIR"
 - CGO_LDFLAGS="-L"$TRAVIS_BUILD_DIR/build/REDALERT" -l:libRA_CRC.a" go test -v ./...

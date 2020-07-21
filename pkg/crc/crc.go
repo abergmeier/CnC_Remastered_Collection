@@ -4,6 +4,7 @@ package crc
 // #include <string.h>
 // #include "../../REDALERT/platformlib/PLATCRC.H"
 import "C"
+
 import (
 	"fmt"
 	"strings"
@@ -19,6 +20,15 @@ func RA(s string) int32 {
 
 func RAHexString(s string) string {
 	crc := RA(s)
+	return RAHexStringFromInt32(crc)
+}
+
+func RAHexStringFromInt32(crc int32) string {
 	ip := unsafe.Pointer(&crc)
 	return fmt.Sprintf("0x%08X", *(*uint32)(ip))
+}
+
+func FromUint32(crc uint32) int32 {
+	uip := unsafe.Pointer(&crc)
+	return *(*int32)(uip)
 }
