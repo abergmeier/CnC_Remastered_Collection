@@ -43,16 +43,22 @@
  *   MixFileClass::Free -- Uncaches a cached mixfile.                                          * 
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
-#include	"function.h"
-#include	<direct.h>
-#include	<fcntl.h>
-#include	<io.h>
-#include	<dos.h>
-#include	<errno.h>
-#include	<share.h>
-#include	"mixfile.h"
-
+#ifndef _MSC_VER
+#include <linux/limits.h>
+#endif
+#include <cctype>
+#include <stdlib.h>
+#include <string.h>
+#include "CCFILE.H"
+#include "CONQUER.H"
+#include "CRC.H"
+#include "DLL.H"
+#include "EXIT.H"
+#include "FATAL.H"
+#include "FILETEMP.H"
+#include "MEMFLAG.H"
+#include	"MIXFILE.H"
+#include "PLATSTRING.H"
 
 template<class T> int Compare(T const *obj1, T const *obj2) {
 	if (*obj1 < *obj2) return(-1);
@@ -60,6 +66,9 @@ template<class T> int Compare(T const *obj1, T const *obj2) {
 	return(0);
 };
 
+
+
+extern int RequiredCD;
 
 /*
 **	This is the pointer to the first mixfile in the list of mixfiles registered
@@ -431,8 +440,8 @@ int compfunc(void const *ptr1, void const *ptr2)
 //	long diff = *(long const *)ptr1 - *(long const *)ptr2;
 //	return FP_SEG(diff);
 
-	if (*(long const *)ptr1 < *(long const *)ptr2) return(-1);
-	if (*(long const *)ptr1 > *(long const *)ptr2) return(1);
+	if (*(std::int32_t const *)ptr1 < *(std::int32_t const *)ptr2) return(-1);
+	if (*(std::int32_t const *)ptr1 > *(std::int32_t const *)ptr2) return(1);
 	return(0);
 }
 
@@ -467,7 +476,7 @@ int compfunc(void const *ptr1, void const *ptr2)
  * HISTORY:                                                                                    *
  *   10/17/1994 JLB : Created.                                                                 *
  *=============================================================================================*/
-bool MixFileClass::Offset(char const *filename, void ** realptr, MixFileClass ** mixfile, long * offset, long * size)
+bool MixFileClass::Offset(char const *filename, void ** realptr, MixFileClass ** mixfile, std::int32_t * offset, std::int32_t * size)
 {
 	MixFileClass * ptr;
 
@@ -476,7 +485,11 @@ bool MixFileClass::Offset(char const *filename, void ** realptr, MixFileClass **
 	/*
 	**	Create the key block that will be used to binary search for the file.
 	*/
+#ifdef _MSC_VER
 	char file_name_copy[_MAX_PATH];
+#else
+	char file_name_copy[PATH_MAX];
+#endif
 	strcpy(file_name_copy, filename);
 	strupr(file_name_copy);
 	long crc = Calculate_CRC(file_name_copy, strlen(file_name_copy));

@@ -69,11 +69,7 @@ extern "C" {
 #define READ						1	// Read access.
 #define WRITE						2	// Write access.
 
-#ifndef SEEK_SET
-#define SEEK_SET					0	// Seek from start of file.
-#define SEEK_CUR					1	// Seek relative from current location.
-#define SEEK_END					2	// Seek from end of file.
-#endif
+#include "SEEK.H"
 
 #define ERROR_WINDOW 			1
 #define ErrorWindow 			1

@@ -55,6 +55,7 @@ class MixFileClass : public Node<MixFileClass<T>>
 		static bool Offset(char const *filename, void ** realptr = 0, MixFileClass ** mixfile = 0, long * offset = 0, long * size = 0);
 		static void const * Retrieve(char const *filename);
 
+		#pragma pack(push, 1)
 		struct SubBlock {
 			long CRC;				// CRC code for embedded file.
 			long Offset;			// Offset from start of data section.
@@ -64,6 +65,7 @@ class MixFileClass : public Node<MixFileClass<T>>
 			int operator > (SubBlock & two) const {return (CRC > two.CRC);};
 			int operator == (SubBlock & two) const {return (CRC == two.CRC);};
 		};
+		#pragma pack(pop)
 
 	private:
 		static MixFileClass * Finder(char const * filename);
@@ -93,10 +95,12 @@ class MixFileClass : public Node<MixFileClass<T>>
 		**	This is the initial file header. It tells how many files are embedded
 		**	within this mixfile and the total size of all embedded files.
 		*/
+		#pragma pack(push, 1)
 		typedef struct {
 			short	count;
 			long	size;
 		} FileHeader;
+		#pragma pack(pop)
 
 		/*
 		**	The number of files within the mixfile.

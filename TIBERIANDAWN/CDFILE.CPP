@@ -37,8 +37,10 @@
  *   CDFileClass::Set_Search_Drives -- Sets a list of search paths for file access.            *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include	"function.h"
-//#include	"cdfile.h"
+#include <string.h>
+#include "PLATDEFINES.H"
+#include	"CDFILE.H"
+#include "CONQUER_FUN.H"
 
 /*
 **	Pointer to the first search path record.
@@ -184,7 +186,11 @@ int CDFileClass::Set_Search_Drives(char * pathlist)
 	while (ptr) {
 		if (strlen(ptr)){
 
+#ifdef _MSC_VER
 			char path[MAX_PATH];						// Working path buffer.
+#else
+			char path[PATH_MAX];						// Working path buffer.
+#endif //_MSC_VER
 
 			/*
 			**	Fixup the path to be legal. Legal is defined as all that is necessary to
@@ -388,8 +394,11 @@ char const * CDFileClass::Set_Name(char const *filename)
 	SearchDriveType * srch = First;
 
 	while (srch) {
+#ifdef _MSC_VER
 		char path[_MAX_PATH];
-
+#else
+		char path[PATH_MAX];
+#endif //_MSC_VER
 		/*
 		**	Build a pathname to search for.
 		*/

@@ -53,16 +53,26 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<string.h>
+#include <cassert>
+#include <ctime>
+#ifdef _MSC_VER
 #include	<direct.h>
 #include	<share.h>
+#else
+#include <errno.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#endif //_MSC_VER
 #include	<stddef.h>
 
-#include	"rawfile.h"
+#include	"RAWFILE.H"
 
 #ifndef WIN32
 #include	<fcntl.h>
+#ifdef _MSC_VER
 #include	<io.h>
 #include	<dos.h>
+#endif
 extern short Hard_Error_Occured;
 #endif
 
@@ -256,6 +266,8 @@ int RawFileClass::Open(int rights)
 				#ifdef WIN32
 					Handle = CreateFile(Filename, GENERIC_READ, FILE_SHARE_READ,
 												NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+				#elif __unix__
+				    Handle = open(Filename, O_RDONLY);
 				#else
 					_dos_open(Filename, O_RDONLY|SH_DENYNO, &Handle);
 				#endif
@@ -265,6 +277,8 @@ int RawFileClass::Open(int rights)
 				#ifdef WIN32
 					Handle = CreateFile(Filename, GENERIC_WRITE, 0,
 												NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+				#elif __unix__
+					Handle = open(Filename, O_CREAT);
 				#else
 					_dos_creat(Filename, 0, &Handle);
 				#endif
@@ -274,6 +288,8 @@ int RawFileClass::Open(int rights)
 				#ifdef WIN32
 					Handle = CreateFile(Filename, GENERIC_READ | GENERIC_WRITE, 0,
 												NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+				#elif __unix__
+					Handle = open(Filename, O_RDWR|O_CREAT);
 				#else
 					_dos_open(Filename, O_RDWR|O_CREAT|SH_DENYWR, &Handle);
 				#endif
@@ -380,7 +396,14 @@ int RawFileClass::Is_Available(int forced)
 #else
 
 		Hard_Error_Occured = 0;
+#ifdef __unix__
+		Handle = open(Filename, O_RDONLY);
+		if (Handle == -1) {
+			open_failed = true;
+		}
+#else
 		open_failed = _dos_open(Filename, O_RDONLY|SH_DENYNO, &Handle);
+#endif //__unix__
 
 		/*
 		**	If DOS reports that everything is just fine except that the file is not present,
@@ -425,6 +448,10 @@ int RawFileClass::Is_Available(int forced)
 #ifdef WIN32
 	if (!CloseHandle(Handle)) {
 		Error(GetLastError(), false, Filename);
+	}
+#elif __unix__
+	if (close(Handle)) {
+		Error(errno, false, Filename);
 	}
 #else
 	if (_dos_close(Handle)) {
@@ -473,7 +500,11 @@ void RawFileClass::Close(void)
 			**	Close the file. If there was an error in the close operation -- abort.
 			*/
 			Hard_Error_Occured = 0;
+#ifdef __unix__
+			if (close(Handle)) {
+#else
 			if (_dos_close(Handle)) {
+#endif //__unix__
 
 				/*
 				**	By definition, this error can only be a bad file handle. This a fatal condition
@@ -597,7 +628,12 @@ long RawFileClass::Read(void * buffer, long size)
 		desired = size < 32000L ? size : 32000L;
 
 		Hard_Error_Occured = 0;
+#ifdef __unix__
+		actual = read(Handle, buffer, desired);
+		readresult = errno;
+#else
 		readresult = _dos_read(Handle, buffer, desired, &actual);
+#endif //__unix__
 
 		/*
 		**	If a hard error occurred, then assume that it is the case of the CD-ROM or
@@ -693,7 +729,12 @@ long RawFileClass::Write(void const * buffer, long size)
 		Hard_Error_Occured = 0;
 //		desired = (unsigned)MIN(size, Transfer_Block_Size());
 		desired = size;
+#ifdef __unix__
+		actual = write(Handle, buffer, desired);
+		writeresult = errno;
+#else
 		writeresult = _dos_write(Handle, buffer, desired, &actual);
+#endif //__unix__
 
 		/*
 		**	If a hard error occurred, then assume it is the case of the media being
@@ -879,7 +920,16 @@ long RawFileClass::Size(void)
 		*/
 		for (;;) {
 			Hard_Error_Occured = 0;
+#ifdef __unix__
+			struct stat st;
+
+			if (fstat(Handle, &st))
+				size = -1;
+			else
+				size = st.st_size;
+#else
 			size = filelength(Handle);
+#endif
 
 			/*
 			**	If a hard error occurred, then assume it is the case of removed media. Display an
@@ -1085,12 +1135,34 @@ unsigned long RawFileClass::Get_Date_Time(void)
 	//	If the file is open, then proceed normally.
 	//
 	if ( RawFileClass::Is_Open() ) {
+#ifdef __unix__
+		struct stat st;
+
+		if (fstat(Handle, &st)) {
+			//
+			// return 0 indicating error with no date and time
+			//
+			return( datetime );
+		}
+
+		std::tm *t = std::localtime(&st.st_mtim.tv_sec);
+		if (!t) {
+			//
+			// return 0 indicating error with no date and time
+			//
+			return( datetime );
+		}
+		date = t->tm_year << 9 & t->tm_mon << 5 & t->tm_mday << 0;
+		time = t->tm_hour << 11 & t->tm_min << 5 & t->tm_sec << 0;
+
+#else
 		if ( _dos_getftime( Handle, &date, &time ) ) {
 			//
 			// return 0 indicating error with no date and time
 			//
 			return( datetime );
 		}
+#endif //__unix__
 	} else {
 
 		//
@@ -1098,7 +1170,17 @@ unsigned long RawFileClass::Get_Date_Time(void)
 		//
 		if ( RawFileClass::Is_Available() ) {
 			RawFileClass::Open();
+#ifdef __unix__
+			struct stat st;
 
+			if (fstat(Handle, &st)) {
+				RawFileClass::Close();
+				//
+				// return 0 indicating error with no date and time
+				//
+				return( datetime );
+			}
+#else
 			if ( _dos_getftime( Handle, &date, &time ) ) {
 				RawFileClass::Close();
 				//
@@ -1106,7 +1188,7 @@ unsigned long RawFileClass::Get_Date_Time(void)
 				//
 				return( datetime );
 			}
-
+#endif //__unix__
 			RawFileClass::Close();
 		} else {
 			//
@@ -1170,12 +1252,16 @@ bool RawFileClass::Set_Date_Time(unsigned long datetime)
 			time = (unsigned short)(datetime & 0xFFFF);
 			date = (unsigned short)((datetime >> 16) & 0xFFFF);
 
+#ifdef __unix__
+			assert(false); // Not implemented because I think this is a bad idea
+#else
 			if ( !_dos_setftime( Handle, date, time ) ) {
 				//
 				// return true indicating success
 				//
 				return( true );
 			}
+#endif //__unix__
 		}
 	} else {
 
@@ -1188,6 +1274,9 @@ bool RawFileClass::Set_Date_Time(unsigned long datetime)
 			time = (unsigned short)(datetime & 0xFFFF);
 			date = (unsigned short)((datetime >> 16) & 0xFFFF);
 
+#ifdef __unix__
+			assert(false);
+#else
 			if ( !_dos_setftime( Handle, date, time ) ) {
 				RawFileClass::Close();
 				//
@@ -1195,7 +1284,7 @@ bool RawFileClass::Set_Date_Time(unsigned long datetime)
 				//
 				return( true );
 			}
-
+#endif //__unix__
 			RawFileClass::Close();
 		}
 	}

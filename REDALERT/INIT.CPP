@@ -2316,7 +2316,7 @@ long Obfuscate(char const * string)
 	**	Transform the buffer into a number. This transformation is character
 	**	order dependant.
 	*/
-	long code = Calculate_CRC(buffer, length);
+	std::int32_t code = Calculate_CRC(buffer, length);
 
 	/*
 	**	Record a copy of this initial transformation to be used in a later
@@ -2441,7 +2441,7 @@ long Obfuscate(char const * string)
  *   03/02/1996 JLB : Created.                                                                 *
  *=============================================================================================*/
 extern "C"  {
-long Calculate_CRC(void * buffer, long len)
+std::int32_t Calculate_CRC(void * buffer, long len)
 {
 	return(CRCEngine()(buffer, len));
 }

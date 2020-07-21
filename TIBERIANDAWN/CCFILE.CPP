@@ -42,15 +42,24 @@
  *   CCFileClass::Error -- Handles displaying a file error message.                            *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
-#include	"function.h"
+#include <algorithm>
 //#include	<direct.h>
 //#include	<fcntl.h>
 //#include	<io.h>
 //#include	<dos.h>
 //#include	<errno.h>
 //#include	<share.h>
-//#include	"ccfile.h"
+#include <string.h>
+#include	"CCFILE.H"
+#include "CONQUER.H"
+#include "PLATDEFINES.H"
+#include "DLL.H"
+#include "EXIT.H"
+#include "JSHELL_FUN.H"
+#include "MEMFLAG.H"
+#include "MIXFILE.H"
+
+extern int RequiredCD;
 
 
 /***********************************************************************************************

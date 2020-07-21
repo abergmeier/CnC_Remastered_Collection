@@ -142,7 +142,7 @@ extern BOOL				OverlappedVideoBlits;	// Can video driver blit overlapped regions
 /* The following prototypes are for the file: EXIT.CPP							*/
 /* Prog_End Must be supplied by the user program in startup.cpp				*/
 /*=========================================================================*/
-VOID __cdecl Prog_End(const char *why = NULL, bool fatal = false);	// Added why and fatal parameters. ST - 6/27/2019 10:10PM		 
+#include "EXIT.H"
 VOID __cdecl Exit(INT errorval, const BYTE *message, ...);
 
 /*=========================================================================*/

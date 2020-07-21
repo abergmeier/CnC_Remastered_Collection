@@ -537,11 +537,11 @@ assert(filename != NULL);//BG
 	**	Create the key block that will be used to binary search for the file.
 	*/
 	// Can't call strupr on a const string. ST - 5/20/2019
-	//long crc = Calculate_CRC(strupr((char *)filename), strlen(filename));
+	//std::int32_t crc = Calculate_CRC(strupr((char *)filename), strlen(filename));
 	char filename_upper[_MAX_PATH];
 	strcpy(filename_upper, filename);
 	strupr(filename_upper);
-	long crc = Calculate_CRC(strupr(filename_upper), strlen(filename_upper));
+	std::int32_t crc = Calculate_CRC(strupr(filename_upper), strlen(filename_upper));
 	SubBlock key;
 	key.CRC = crc;
 

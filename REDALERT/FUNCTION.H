@@ -502,7 +502,7 @@ void Wide_Area_Damage(COORDINATE coord, LEPTON radius, int damage, TechnoClass *
 **	CONQUER.CPP
 */
 void List_Copy(short const * source, int len, short * dest);
-int Get_CD_Index (int cd_drive, int timeout);
+#include "CONQUER_FUN.H"
 int Owner_From_Name(char const * text);
 CrateType Crate_From_Name(char const * name);
 Rect const Shape_Dimensions(void const * shapedata, int shapenum);

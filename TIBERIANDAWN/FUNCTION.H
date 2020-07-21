@@ -309,7 +309,7 @@ typedef struct NodeNameTag {
 
 
 extern int Get_CD_Drive(void);
-extern void Fatal(char const *message, ...);
+#include "FATAL.H"
 
 
 /*
@@ -338,7 +338,7 @@ void Explosion_Damage(COORDINATE coord, unsigned strength, TechnoClass * source,
 **	CONQUER.CPP
 */
 void Center_About_Objects(void);
-bool Force_CD_Available(int cd);
+#include "CONQUER.H"
 void Handle_View(int view, int action=0);
 void Handle_Team(int team, int action=0);
 TechnoTypeClass const * Fetch_Techno_Type(RTTIType type, int id);
@@ -777,7 +777,7 @@ inline char const * Text_String(int string) {return(Extract_String(SystemStrings
 // ST - 1/4/2019 10:31AM
 //
 void Blit_Hid_Page_To_Seen_Buff(void);
-extern bool RunningAsDLL;
+#include "DLL.H"
 
 
 template<class T> inline T Random_Picky(T a, T b, char *sfile, int line)

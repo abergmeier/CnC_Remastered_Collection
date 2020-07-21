@@ -35,10 +35,9 @@
 #ifndef CCFILE_H
 #define CCFILE_H
 
-#include	<wwlib32.h>
+#include <cstdint>
 #include	<limits.h>
-#include	"mixfile.h"
-#include	"cdfile.h"
+#include	"CDFILE.H"
 
 
 /*
@@ -88,7 +87,7 @@ class CCFileClass : public CDFileClass
 		**	if the file is part of a mixfile that resides on disk. It serves as the counterpart
 		**	to the "Pointer" variable.
 		*/
-		long Start;
+		std::int32_t Start;
 
 		/*
 		**	This is the current seek position of the file. It is duplicated here if the file is
@@ -101,7 +100,7 @@ class CCFileClass : public CDFileClass
 		**	This is the size of the file if it was embedded in a mixfile. The size must be manually
 		**	kept track of because the DOS file size is invalid.
 		*/
-		long Length;
+		std::int32_t Length;
 
 		// Force these to never be invoked.
 		CCFileClass const operator = (CCFileClass const & c);

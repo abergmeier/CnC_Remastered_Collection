@@ -1493,7 +1493,7 @@ GLOBAL	C Calculate_CRC	:NEAR
 	CODESEG
 */
 
-extern "C" long __cdecl Calculate_CRC(void *buffer, long length)
+extern "C" std::int32_t __cdecl Calculate_CRC(void *buffer, long length)
 {
 	unsigned long crc;
 

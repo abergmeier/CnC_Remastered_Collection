@@ -37,6 +37,8 @@
 
 //#include	<stdio.h>
 
+#include "SEEK.H"
+
 
 #ifndef _READ
 #define READ 1

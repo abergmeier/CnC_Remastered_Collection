@@ -43,7 +43,7 @@
 #define IBM				TRUE
 #endif
 
-#define WW_ERROR		-1
+#include "PLATDEFINES.H"
 
 #define PRIVATE		static
 #define PUBLIC			/* Routines & data don't have a specifier */

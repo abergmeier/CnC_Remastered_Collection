@@ -35,8 +35,10 @@
 #ifndef CDFILE_H
 #define CDFILE_H
 
+#ifdef _MSC_VER
 #include	<dos.h>
-#include	"rawfile.h"
+#endif
+#include	"RAWFILE.H"
 
 /*
 **	This class is derived from the raw file class. This class adds the functionality of searching
