@@ -60,8 +60,12 @@
 #include	<stdlib.h>
 #include	<stddef.h>
 
+#ifdef _MSC_VER
 inline void * operator new(size_t , void * pointer) {return(pointer);}
 inline void * operator new[](size_t , void * pointer) {return(pointer);}
+#else
+#include <new>
+#endif
 
 
 /**************************************************************************
